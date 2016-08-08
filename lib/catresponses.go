@@ -20,11 +20,6 @@ type CatIndexStore struct {
 	PriSize int64
 }
 
-type CatAliasInfo struct {
-	Name  string
-	Index string
-}
-
 type CatShardInfo struct {
 	IndexName string
 	Shard     int
@@ -63,8 +58,8 @@ type CatNodeInfo struct {
 	CmpltSize          string
 	FieldMem           int
 	FieldEvict         int
-	FiltMem            int
-	FiltEvict          int
+	QueryMem           int
+	QueryEvict         int
 	FlushTotal         int
 	FlushTotalTime     string
 	GetCur             string
@@ -74,7 +69,6 @@ type CatNodeInfo struct {
 	GetExistsTotal     string
 	GetMissingTime     string
 	GetMissingTotal    string
-	IDCacheMemory      int
 	IdxDelCur          string
 	IdxDelTime         string
 	IdxDelTotal        string

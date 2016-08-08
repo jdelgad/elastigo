@@ -6,6 +6,8 @@ import (
 	"strings"
 )
 
+
+
 // newCatNodeInfo returns an instance of CatNodeInfo populated with the
 // the information in the cat output indexLine which contains the
 // specified fields. An err is returned if a field is not known.
@@ -20,7 +22,7 @@ func newCatNodeInfo(fields []string, indexLine string) (catNode *CatNodeInfo, er
 		return nil, fmt.Errorf("Number of fields (%d) greater than number of stats (%d)", lf, ls)
 	}
 
-	// Populate the appropriate field in CatNodeInfo
+	// Populate the apropriate field in CatNodeInfo
 	for i, field := range fields {
 
 		switch field {
@@ -88,18 +90,18 @@ func newCatNodeInfo(fields []string, indexLine string) (catNode *CatNodeInfo, er
 				return nil, err
 			}
 			catNode.FieldEvict = val
-		case "filter_cache.memory_size", "fcm", "filterCacheMemory":
+		case "query_cache.memory_size", "qcm", "queryCacheMemory":
 			val, err := strconv.Atoi(split[i])
 			if err != nil {
 				return nil, err
 			}
-			catNode.FiltMem = val
-		case "filter_cache.evictions", "fce", "filterCacheEvictions":
+			catNode.QueryMem = val
+		case "query_cache.evictions", "qce", "queryCacheEvictions":
 			val, err := strconv.Atoi(split[i])
 			if err != nil {
 				return nil, err
 			}
-			catNode.FiltEvict = val
+			catNode.QueryEvict = val
 		case "flush.total", "ft", "flushTotal":
 			val, err := strconv.Atoi(split[i])
 			if err != nil {
@@ -122,12 +124,6 @@ func newCatNodeInfo(fields []string, indexLine string) (catNode *CatNodeInfo, er
 			catNode.GetMissingTime = split[i]
 		case "get.missing_total", "gmto", "getMissingTotal":
 			catNode.GetMissingTotal = split[i]
-		case "id_cache.memory_size", "im", "idCacheMemory":
-			val, err := strconv.Atoi(split[i])
-			if err != nil {
-				return nil, err
-			}
-			catNode.IDCacheMemory = val
 		case "indexing.delete_current", "idc", "indexingDeleteCurrent":
 			catNode.IdxDelCur = split[i]
 		case "indexing.delete_time", "idti", "indexingDeleteime":
@@ -164,7 +160,7 @@ func newCatNodeInfo(fields []string, indexLine string) (catNode *CatNodeInfo, er
 			catNode.PercTime = split[i]
 		case "percolate.total", "pto", "percolateTotal":
 			catNode.PercTotal = split[i]
-		case "refresh.total", "rto", "refreshTotal":
+		case "refesh.total", "rto", "refreshTotal":
 			catNode.RefreshTotal = split[i]
 		case "refresh.time", "rti", "refreshTime":
 			catNode.RefreshTime = split[i]
