@@ -22,7 +22,7 @@ func newCatNodeInfo(fields []string, indexLine string) (catNode *CatNodeInfo, er
 		return nil, fmt.Errorf("Number of fields (%d) greater than number of stats (%d)", lf, ls)
 	}
 
-	// Populate the apropriate field in CatNodeInfo
+	// Populate the appropriate field in CatNodeInfo
 	for i, field := range fields {
 
 		switch field {
